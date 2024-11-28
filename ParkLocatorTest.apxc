@@ -1,0 +1,14 @@
+@isTest
+public class ParkLocatorTest {
+    @isTest public static void parkLocatorTest(){
+        // use the Test.setMock, which causes the fake response to be generated
+        Test.setMock(WebServiceMock.class, new ParkServiceMock());
+        // call the method that invokes a callout
+        List<String> result = ParkLocator.country('England');
+        List<String> actual = new List<String>{'Eco', 'JamSheen', 'Model Town'};
+        // verify the actual and fake result
+        System.debug(result);
+        System.debug(actual);
+        System.AssertEquals(actual, result);
+    }
+}
